@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.com.ifba.curso.service;
-
-import br.com.ifba.curso.dao.CursoDao;
-import br.com.ifba.curso.dao.CursoIDao;
 import br.com.ifba.curso.entity.Curso;
+import br.com.ifba.curso.repository.CursoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class CursoService implements CursoIService {
     //Curso service com os atributos
     @Autowired
-    private CursoIDao cursoIDao;
+    private CursoRepository cursoIDao;
 
     @Override
     public Curso save(Curso curso) throws RuntimeException {
@@ -45,18 +43,18 @@ public class CursoService implements CursoIService {
         if(curso == null){
             throw new RuntimeException ("Dados do" + " Curso nao preenchidos");
         } else {
-            return cursoIDao.update(curso);
+            return cursoIDao.save(curso);
         }
     }
     
     @Override
-    public Curso findById(Long curso) throws RuntimeException {
-        if(curso == null){
-            throw new RuntimeException ("Dados do" + " Curso nao preenchidos");
-        } else {
-            return cursoIDao.findById(curso);
+    public Curso findById(Long id) {
+        if (id == null) {
+            throw new RuntimeException("O ID do curso é obrigatório.");
         }
-        
+
+        return cursoIDao.findById(id)
+                .orElseThrow(() -> new RuntimeException("Curso não encontrado para o ID: " + id));
     }
     
      @Override
@@ -64,13 +62,15 @@ public class CursoService implements CursoIService {
          return cursoIDao.findAll();
      } 
      
-    @Override
-    public Curso findByCodCurso(String codcurso) {
-        if(codcurso == null){
-            throw new RuntimeException ("Primeiramente preencha o Codigo do curso");
-        } else {
-             return cursoIDao.findByCodCurso(codcurso);
-        }
-    } 
-    
+//    @Override
+//    public Curso findByCodCurso(String codCurso) {
+//        if (codCurso == null || codCurso.isBlank()) {
+//            throw new RuntimeException("O código do curso é obrigatório.");
+//        }
+//
+//        return cursoIDao.findByCodCurso(codCurso)
+//                .orElseThrow(() -> new RuntimeException("Curso não encontrado para o código: " + codCurso));
+//            
+//    }
+//    
 }

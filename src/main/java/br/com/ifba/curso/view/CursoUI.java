@@ -4,9 +4,10 @@
  */
 package br.com.ifba.curso.view;
 
+import br.com.ifba.Prg03springApplication;
 import br.com.ifba.curso.controller.CursoController;
 import br.com.ifba.curso.controller.CursoIController;
-import br.com.ifba.curso.dao.CursoDao;
+
 import br.com.ifba.curso.entity.Curso;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Entity;
@@ -16,6 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,6 +30,9 @@ import org.springframework.stereotype.Component;
 public class CursoUI extends javax.swing.JFrame {
     @Autowired
     private CursoIController cursoController;
+    
+    private ApplicationContext context;
+    
     /**
      * Creates new form CursoUI
      */
@@ -249,7 +256,10 @@ public class CursoUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        AddCursoUI addCursoUi = new AddCursoUI();
+        ConfigurableApplicationContext context = (ConfigurableApplicationContext) 
+            SpringApplication.run(Prg03springApplication.class);
+        
+        AddCursoUI addCursoUi = context.getBean(AddCursoUI.class);
         addCursoUi.setDefaultCloseOperation(CursoUI.DISPOSE_ON_CLOSE);
         addCursoUi.setVisible(true);
  
@@ -274,8 +284,10 @@ public class CursoUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
-            EditCursoUI editCursoUI = new EditCursoUI();
+            ConfigurableApplicationContext context = (ConfigurableApplicationContext) 
+                SpringApplication.run(Prg03springApplication.class);
+            
+            EditCursoUI editCursoUI =  context.getBean(EditCursoUI.class);
             editCursoUI.setDefaultCloseOperation(CursoUI.DISPOSE_ON_CLOSE);
             editCursoUI.setVisible(true);
 
@@ -283,19 +295,19 @@ public class CursoUI extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
        
-        String text = txtFind.getText().trim();
-
-        Curso curso = cursoController.findByCodCurso(text);
-
-        if (curso != null) {
-            JOptionPane.showMessageDialog(this, 
-                    "Curso Encontrado:\n" +
-                    "ID: " + curso.getId() + "\n" +
-                    "Nome: " + curso.getNome() + "\n" +
-                    "Código: " + curso.getCodigoCurso());
-        } else {
-            JOptionPane.showMessageDialog(this, "Curso não encontrado");
-        } 
+//        String text = txtFind.getText().trim();
+//
+//        Curso curso = cursoController.findByCodCurso(text);
+//
+//        if (curso != null) {
+//            JOptionPane.showMessageDialog(this, 
+//                    "Curso Encontrado:\n" +
+//                    "ID: " + curso.getId() + "\n" +
+//                    "Nome: " + curso.getNome() + "\n" +
+//                    "Código: " + curso.getCodigoCurso());
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Curso não encontrado");
+//        } 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     public Entity getCursobyLinha () {

@@ -11,14 +11,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class Prg03springApplication {
-
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context =
+            
+            System.setProperty("java.awt.headless", "false");
+            SpringApplication.run(Prg03springApplication.class, args);
+            ConfigurableApplicationContext context =
                 new SpringApplicationBuilder(Prg03springApplication.class)
                         .headless(false).run(args);
 
-        CursoUI telaCursoSave = context.getBean(CursoUI.class);
-        telaCursoSave.setVisible(true);
+        CursoUI cursoUI = context.getBean(CursoUI.class);
+        cursoUI.setVisible(true);
         
     }
 

@@ -4,7 +4,7 @@
  */
 package br.com.ifba.curso.controller;
 
-import br.com.ifba.curso.dao.CursoDao;
+
 import br.com.ifba.curso.entity.Curso;
 import br.com.ifba.curso.service.CursoIService;
 import br.com.ifba.curso.service.CursoService;
@@ -49,8 +49,8 @@ public class CursoController implements CursoIController{
         return cursoIService.findById(id);
     }
     
-    @Override
-    public Curso findByCodCurso(String codcurso) {
-        return cursoIService.findByCodCurso(codcurso);
-    }
+//    @Override
+//    public Curso findByCodCurso(String codCurso) {
+//        return cursoIService.findByCodCurso(codCurso);
+//    }
 }

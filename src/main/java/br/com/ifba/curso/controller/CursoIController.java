@@ -24,5 +24,5 @@ public interface CursoIController {
     
 
     public abstract Curso findById(Long curso);
-    public abstract Curso findByCodCurso(String codcurso);
+//    public abstract Curso findByCodCurso(String codcurso);
 }
