@@ -20,6 +20,6 @@ public interface CursoIService {
     public abstract Curso update(Curso curso);
     public abstract Curso findById(Long curso);
     public abstract List <Curso> findAll();
-//    public abstract Curso findByCodCurso(String codCurso);
+    public abstract Curso findBycodigoCurso(String codCurso);
 
 }

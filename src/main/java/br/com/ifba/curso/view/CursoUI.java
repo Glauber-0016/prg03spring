@@ -295,19 +295,19 @@ public class CursoUI extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
        
-//        String text = txtFind.getText().trim();
-//
-//        Curso curso = cursoController.findByCodCurso(text);
-//
-//        if (curso != null) {
-//            JOptionPane.showMessageDialog(this, 
-//                    "Curso Encontrado:\n" +
-//                    "ID: " + curso.getId() + "\n" +
-//                    "Nome: " + curso.getNome() + "\n" +
-//                    "Código: " + curso.getCodigoCurso());
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Curso não encontrado");
-//        } 
+        String text = txtFind.getText().trim();
+
+        Curso curso = cursoController.findBycodigoCurso(text);
+
+        if (curso != null) {
+            JOptionPane.showMessageDialog(this, 
+                    "Curso Encontrado:\n" +
+                    "ID: " + curso.getId() + "\n" +
+                    "Nome: " + curso.getNome() + "\n" +
+                    "Código: " + curso.getCodigoCurso());
+        } else {
+            JOptionPane.showMessageDialog(this, "Curso não encontrado");
+        } 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     public Entity getCursobyLinha () {

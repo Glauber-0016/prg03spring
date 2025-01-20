@@ -49,8 +49,8 @@ public class CursoController implements CursoIController{
         return cursoIService.findById(id);
     }
     
-//    @Override
-//    public Curso findByCodCurso(String codCurso) {
-//        return cursoIService.findByCodCurso(codCurso);
-//    }
+    @Override
+    public Curso findBycodigoCurso(String codCurso) {
+        return cursoIService.findBycodigoCurso(codCurso);
+    }
 }
